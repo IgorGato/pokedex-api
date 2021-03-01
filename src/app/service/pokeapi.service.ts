@@ -13,4 +13,8 @@ export class PokeapiService {
   getByIdPokemon(id: any){
     return this.http.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
   }
+
+  getByTypePokemons(id: any){
+    return this.http.get(`https://pokeapi.co/api/v2/type/${id}`)
+  }
 }

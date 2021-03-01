@@ -7,12 +7,14 @@ import { IdSearchComponent } from './search/id-search/id-search.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { TypeComponent } from './search/type/type.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    IdSearchComponent
+    IdSearchComponent,
+    TypeComponent
   ],
   imports: [
     BrowserModule,
