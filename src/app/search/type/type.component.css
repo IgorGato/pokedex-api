@@ -1,8 +1,5 @@
-/* div{
-    border: solid red 1px;
-} */
 
-h5, p{
+h5, h2, p{
     text-transform: uppercase;
 }
 
@@ -22,4 +19,14 @@ h5, p{
 
 .dexNumber{
     color: rgb(167, 167, 167);
+}
+
+.pokemon-icon{
+    max-width: 100px;
+    height: 21px;
+}
+
+.pokeball-icon{
+    max-width: 30px;
+    height: 30px;
 }

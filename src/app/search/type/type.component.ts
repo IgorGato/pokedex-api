@@ -10,23 +10,27 @@ export class TypeComponent implements OnInit {
 
   pokemons: any[] = [];
   pokemonsList: any[] = [];
-  pokemonType = 1
   pokemon: any
   lenghtPokemon: number
   tipo: number
   number = 10
+  idPokemon = 1
+  typePokemon = false
 
   constructor(
     private pokeapi: PokeapiService
   ) { }
 
   ngOnInit(){
-    this.getPokemonByType()
+    this.getPokemon()
   }
 
-  getPokemonByType() {
-    this.pokeapi.getByTypePokemons(this.pokemonType).subscribe((resp: any) =>{
+  getPokemonByType(type: string) {
+    this.pokeapi.getByTypePokemons(type).subscribe((resp: any) =>{
       this.pokemonsList = resp.pokemon
+
+      this.typePokemon = true
+
       this.tipo = resp.name
       this.lenghtPokemon = resp.pokemon.length
         this.pokemonsList.forEach(result => {
@@ -42,6 +46,42 @@ export class TypeComponent implements OnInit {
       this.lenghtPokemon = 0
   }
 
-  // progressBar(number)
+  getPokemonAll(){
+    this.pokeapi.getAllPokemons().subscribe((resp: any) =>{
+      this.pokemonsList = resp.results
+      console.log(this.pokemonsList)
+
+      this.typePokemon = true
+
+      this.lenghtPokemon = 1118
+        this.pokemonsList.forEach(result => {
+          this.pokeapi.getByIdPokemon(result.name).subscribe((pokemonUnico: any) =>{
+            this.pokemons.push(pokemonUnico)
+            this.pokemons.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
+          })
+        });
+      })
+    
+      this.pokemonsList = []
+      this.pokemons = []
+      this.lenghtPokemon = 0
+  }
+
+  getPokemon(){
+    this.pokeapi.getByIdPokemon(this.idPokemon).subscribe((resp: any) =>{
+      this.pokemon = resp
+
+      this.typePokemon = false
+
+      this.pokemonsList = []
+      this.pokemons = []
+      this.lenghtPokemon = 0
+      
+    }, erro =>{
+      if(erro.status == 404){
+        alert('Pokemon nao encontrado, tente novamente')
+      }
+    })
+  }
 
 }

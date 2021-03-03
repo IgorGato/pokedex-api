@@ -4,6 +4,7 @@
             <input [(ngModel)]="idPokemon" (keyup.enter)="getPokemon()" class="form-control mr-sm-2 " style="width: 300px;" type="text" placeholder="Pesquisar" aria-label="Pesquisar">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="getPokemon()">Pesquisar</button>
         </div>
+        
         <div class="col-md-5 d-flex justify-content-center align-items-center">
             <div class="card text-center d-flex justify-content-center align-items-center" style="width: 14rem;">
                 <img class="card-img-top" [src]="pokemon.sprites.front_default" style="max-width: 150px; max-height: 150px;" alt="Imagem de capa do card">
@@ -11,7 +12,7 @@
                   <h5 class="card-title">{{ pokemon.name }}</h5>
                   <p class="card-text"><b>Type:</b> {{ pokemon.types[0].type.name }}</p>
 
-                  <p class="card-text" *ngIf="secondType"><b>Second Type:</b> {{ pokemon.types[1].type.name }}</p>
+                  <p class="card-text" *ngIf="secondType; else elseType"><b>Second Type:</b> {{ pokemon.types[1].type.name }}</p>
                   <ng-template #elseType>
                     <p class="card-text"><b>Second Type:</b>none</p>
                   </ng-template>

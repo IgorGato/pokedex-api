@@ -1,21 +1,74 @@
-<div class="container">
+<div class="container mt-5" style="background-color:rgb(219, 219, 214); border-radius: 10px;">
 
     <div class="row d-flex justify-content-center align-content-center flex-column">
-        <div class="col-md-5 d-flex mt-5 mb-5">
-            <input [(ngModel)]="pokemonType" (keyup.enter)="getPokemonByType()" class="form-control mr-sm-2 " style="width: 300px;" type="text" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="getPokemonByType()">Pesquisar</button>
+        <div class="col-md-8 d-flex mt-3 mb-1 d-flex justify-content-center align-content-center">
+            <input [(ngModel)]="idPokemon" (keyup.enter)="getPokemon()" class="form-control mr-sm-2 " style="width: 300px;" type="text" placeholder="Pesquise um pokemon pelo nome/ID" aria-label="Pesquisar">
+            <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="getPokemon()">Pesquise</button>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h2>Numero de pokemons do tipo {{ tipo }}: {{ lenghtPokemon }}</h2>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div (click)="getPokemonAll()" class="d-flex justify-content-center align-items-center flex-column" >
+            <img class="mr-3 pokeball-icon" src="https://www.pinclipart.com/picdir/big/558-5584085_cloud-knight-s-pixel-pokeball-pixel-art-clipart.png" alt="">
+            <p class="mr-3">todos</p>
+        </div>
+        <div class="row d-flex justify-content-center align-content-center flex-column">
+
+            <div  class="col-md-8 d-flex mt-2 mb-1 d-flex justify-content-center align-content-center">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('normal')" src="https://cdn.bulbagarden.net/upload/d/dd/Picross_NormalIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('fire')" src="https://cdn.bulbagarden.net/upload/4/47/Picross_FireIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('water')" src="https://cdn.bulbagarden.net/upload/b/b1/Picross_WaterIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('electric')" src="https://cdn.bulbagarden.net/upload/d/d5/Picross_ElectricIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('grass')" src="https://cdn.bulbagarden.net/upload/7/7e/Picross_GrassIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('ice')" src="https://cdn.bulbagarden.net/upload/d/d7/Picross_IceIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('fighting')" src="https://cdn.bulbagarden.net/upload/7/77/Picross_FightingIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('poison')" src="https://cdn.bulbagarden.net/upload/6/66/Picross_PoisonIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('fairy')" src="https://cdn.bulbagarden.net/upload/d/df/Picross_FairyIC.png"  alt="">
+            </div>
+    
+            <div class="col-md-8 d-flex mt-1 mb-3 d-flex justify-content-center align-content-center">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('ground')" src="https://cdn.bulbagarden.net/upload/b/b1/Picross_GroundIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('flying')" src="https://cdn.bulbagarden.net/upload/4/4d/Picross_FlyingIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('psychic')" src="https://cdn.bulbagarden.net/upload/e/e4/Picross_PsychicIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('bug')" src="https://cdn.bulbagarden.net/upload/b/bd/Picross_BugIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('rock')" src="https://cdn.bulbagarden.net/upload/7/7b/Picross_RockIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('ghost')" src="https://cdn.bulbagarden.net/upload/9/99/Picross_GhostIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('dragon')" src="https://cdn.bulbagarden.net/upload/0/0c/Picross_DragonIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('dark')" src="https://cdn.bulbagarden.net/upload/c/c3/Picross_DarkIC.png"  alt="">
+                <img class="mr-3 pokemon-icon" (click)="getPokemonByType('steel')" src="https://cdn.bulbagarden.net/upload/5/53/Picross_SteelIC.png"  alt="">
+            </div>
         </div>
     </div>
+    
+
+</div>
+<div *ngIf="typePokemon" class="row mt-5">
+    <div class="col-md-12 text-center">
+        <h2>Número de pokemons do tipo {{ tipo }}: {{ lenghtPokemon }}</h2>
+    </div>
+</div>
+<div class="container mt-2" style="border: rgb(160, 159, 121) solid 1px; border-radius: 15px;">
+    
 
     <div class="row d-flex justify-content-center align-content-center flex-wrap">
 
-        <div *ngFor='let pokemon of pokemons' class="col-md-3 mb-3 d-flex flex-wrap justify-content-center align-items-center">
+        <div *ngFor='let pokemon of pokemons' class="col-md-3 my-3 d-flex flex-wrap justify-content-center align-items-center">
+            <div  class="card text-center d-flex justify-content-center align-items-center" style="width: 14rem;">
+                    
+                <div>
+                    <img class="card-img-top" [src]="pokemon.sprites.front_default" style="max-width: 150px; max-height: 150px;" alt="Imagem de capa do card">
+                </div>
+                <div>
+                  <h5 class="card-title">{{ pokemon.name }}</h5>
+                  <p class="card-text" *ngIf="pokemon.types[1] != null; else elseType">{{ pokemon.types[0].type.name }} / {{ pokemon.types[1].type.name }}</p>
+                  <ng-template #elseType>
+                    <p class="card-text">{{ pokemon.types[0].type.name }} </p>
+                  </ng-template>
+                  <p class="dexNumber"> #{{ pokemon.id }} </p>
+                </div>
+              </div>
+        </div>
+        <div *ngIf="typePokemon == false" class="col-md-3 my-5 d-flex flex-wrap justify-content-center align-items-center">
             <div  class="card text-center d-flex justify-content-center align-items-center" style="width: 14rem;">
                     
                 <div>
@@ -33,6 +86,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 
