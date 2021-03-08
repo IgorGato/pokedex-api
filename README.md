@@ -1,5 +1,7 @@
 # PokedexPokeapi
 
+Projeto criado com objetivo de a partir da PokeAPI, realizar pesquisa por pokemons, seja atraves de seu ID, nome ou tipo. Utilizando apenas Angular, CSS, HTML E TypeScript
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
 ## Development server
