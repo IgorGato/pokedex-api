@@ -2,6 +2,9 @@
 h5, h2, p{
     text-transform: uppercase;
 }
+h2{ 
+    font-family: 'Bungee', cursive;
+}
 
 .card{
     background-color: #fffcf0;
@@ -24,9 +27,17 @@ h5, h2, p{
 .pokemon-icon{
     max-width: 100px;
     height: 21px;
+    transition: .7s ease;
+    cursor: pointer;
 }
 
 .pokeball-icon{
     max-width: 30px;
     height: 30px;
+    cursor: pointer;
+    transition: .7s ease;
+}
+
+.pokemon-icon:hover, .pokeball-icon:hover{
+    transform: translate3d(0,-7px,0);
 }

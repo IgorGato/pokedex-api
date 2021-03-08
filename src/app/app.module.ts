@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { IdSearchComponent } from './search/id-search/id-search.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
@@ -13,7 +12,6 @@ import { TypeComponent } from './search/type/type.component';
   declarations: [
     AppComponent,
     NavComponent,
-    IdSearchComponent,
     TypeComponent
   ],
   imports: [

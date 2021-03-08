@@ -14,7 +14,7 @@ export class TypeComponent implements OnInit {
   lenghtPokemon: number
   tipo: number
   number = 10
-  idPokemon = 1
+  idPokemon: string = '1'
   typePokemon = false
 
   constructor(
@@ -51,7 +51,7 @@ export class TypeComponent implements OnInit {
       this.pokemonsList = resp.results
       console.log(this.pokemonsList)
 
-      this.typePokemon = true
+      this.typePokemon = false
 
       this.lenghtPokemon = 1118
         this.pokemonsList.forEach(result => {
@@ -82,6 +82,7 @@ export class TypeComponent implements OnInit {
         alert('Pokemon nao encontrado, tente novamente')
       }
     })
+    this.idPokemon = ''
   }
 
 }
